@@ -1,0 +1,25 @@
+<body>
+	<div class = 'list'>
+		<div *ngFor = "let category of categories">
+			 <a class = 'text'>
+			 	<div class = 'cat'>{{category.name}}</div>
+			 	<button class = "shop">Shop now</button>
+			 	<img class = 'pic' [src]="category.link" [alt] = 'category.name'>
+			 </a>
+		</div>
+	</div>
+	<div class = "insta">
+		<h1>#monkistyle</h1>
+		<p>We love seeing ALL of you beautiful, unique people. Keep sharing your amazing selves with @monki and #monkistyle</p>
+	</div>
+	<div class = "photos">
+		<div *ngFor = "let photo of photos" class="photo__card">
+      <img class = "instagram" [src]="photo.link">
+      <div class="team__overlay__text">
+        <div class="team__content__inner">
+          <h6>{{photo.page}}</h6>
+        </div>
+     </div>
+    </div>
+	</div>
+</body>

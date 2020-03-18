@@ -1,0 +1,141 @@
+<body>
+
+  <button class = "menu" style="font-size:24px" (click)="showMenu()"><i class="fa fa-bars"></i><span>&#8194;Menu</span></button>
+  <div *ngIf="!menuOpened" class="menu__bar">
+    <img src="./src/assets/img.png" alt="image">
+    <div class="menu__inner">
+      <div class="menu__card">
+        <p class="first__row">New in</p>
+        <p>View all new</p>
+        <p>New in clothing</p>
+        <p>New in accessories</p>
+        <p>3 for 2</p>
+        <p>Most popular</p>
+      </div>
+      <div class="menu__card">
+        <p class="first__row">Clothing</p>
+        <p>View all new</p>
+        <p>New in clothing</p>
+        <p>New in accessories</p>
+        <p>3 for 2</p>
+        <p>Most popular</p>
+      </div>
+      <div class="menu__card">
+        <p class="first__row">Accessories</p>
+        <p>View all new</p>
+        <p>New in clothing</p>
+        <p>New in accessories</p>
+        <p>3 for 2</p>
+        <p>Most popular</p>
+      </div>
+      <div class="menu__card">
+        <p class="first__row">Editorial</p>
+        <p>View all new</p>
+        <p>New in clothing</p>
+        <p>New in accessories</p>
+        <p>3 for 2</p>
+        <p>Most popular</p>
+      </div>
+      <div class="menu__card">
+        <p class="first__row">Sales</p>
+        <p>View all new</p>
+        <p>New in clothing</p>
+        <p>New in accessories</p>
+        <p>3 for 2</p>
+        <p>Most popular</p>
+      </div>
+    </div>
+
+  </div>
+
+	<a><img src = "https://cdn.shopify.com/s/files/1/0076/0073/4319/articles/monki_1200x1200.jpg?v=1543411172"></a>
+
+	<button class = "sign" (click)="showForm()"><span>Sign in</span></button>
+  <div *ngIf="!isClicked">
+    <form class="modal">
+      <div class="modal__backdrop"></div>
+        <div class="modal__inner">
+          <div><button class="btn__close" (click)="closeForm()">x</button></div>
+          <div class="modal__inner__text">
+            <div class="modal__wrapper"></div>
+            <div class="head__inner">
+              <span class="inside__form">Sign in</span>
+              <span class="inside_create"><a href="#" (click)="showCreateForm()" style="font-weight: 600;">Create an account</a></span>
+            </div>
+            <div>
+              <label>Enter User name</label>
+            </div>
+            <div>
+              <input type="text" placeholder="Username" class="active">
+            </div>
+            <div>
+              <label>Password</label>
+            </div>
+            <div>
+              <input type="password" placeholder="Password" class="active">
+            </div>
+              <div>
+                <input type="checkbox" checked> <span class="inside__check">Keep me signed in</span>
+              </div>
+              <div>
+                <button class="btn__sign">Sign in</button>
+              </div>
+              <div>
+                <p class="inside__forgot">Forgot password</p>
+              </div>
+
+            </div>
+          </div>
+    </form>
+  </div>
+
+  <div *ngIf="!isCreate">
+    <form class="modal">
+      <div class="modal__backdrop"></div>
+        <div class="modal__inner__create">
+          <div><button class="btn__close" (click)="closeCreateForm()">x</button></div>
+          <div class="modal__inner__text">
+            <div class="head__inner">
+              <span class="inside__form__create">New customer</span>
+              <span class="inside_create"><a href="#" (click)="showCreateForm()" style="font-weight: 600;">Sing in</a></span>
+            </div>
+            <div class="inside__info">We´ll send you order confirmation to this email</div>
+            <div>
+              <input type="text" placeholder="Email address" class="active">
+            </div>
+            <div>
+              <input type="password" placeholder="Password" class="active">
+            </div>
+            <div>
+              <input type="password" placeholder="Confirm Password" class="active">
+            </div>
+            <div class="selector">
+              <select>
+                <option value="0">Select country:</option>
+                <option value="1">Australia</option>
+                <option value="2">Canada</option>
+                <option value="3">France</option>
+                <option value="4">Hong Kong</option>
+                <option value="5">Spain</option>
+                <option value="6">Italy</option>
+                <option value="7">USA</option>
+                <option value="8">UK</option>
+                <option value="9">Russia</option>
+                </select>
+            </div>
+              <div>
+                <input type="checkbox"> <span class="inside__check2">I confirm that I am 18 years or older and I consent to Monki processing my personal data in order to send personalized marketing material in accordance with <a href="#">Privacy notice.</a></span>
+              </div>
+              <div>
+                <input type="checkbox"> <span class="inside__check2">I consent to Monki using my personal data to manage my personal account in accordance with <a href="#">Privacy notice.</a></span>
+              </div>
+              <div>
+                <button class="btn__sign">Create account</button>
+              </div>
+          </div>
+        </div>
+    </form>
+  </div>
+
+
+</body>
