@@ -2,7 +2,7 @@
 
   <button class = "menu" style="font-size:24px" (click)="showMenu()"><i class="fa fa-bars"></i><span>&#8194;Menu</span></button>
   <div *ngIf="!menuOpened" class="menu__bar">
-    <img src="./src/assets/img.png" alt="image">
+
     <div class="menu__inner">
       <div class="menu__card">
         <p class="first__row">New in</p>
@@ -12,7 +12,7 @@
         <p>3 for 2</p>
         <p>Most popular</p>
       </div>
-      <div class="menu__card">
+      <div class="menu__card ">
         <p class="first__row">Clothing</p>
         <p>View all new</p>
         <p>New in clothing</p>
@@ -28,7 +28,7 @@
         <p>3 for 2</p>
         <p>Most popular</p>
       </div>
-      <div class="menu__card">
+      <div class="menu__card ">
         <p class="first__row">Editorial</p>
         <p>View all new</p>
         <p>New in clothing</p>
@@ -36,7 +36,7 @@
         <p>3 for 2</p>
         <p>Most popular</p>
       </div>
-      <div class="menu__card">
+      <div class="menu__card ">
         <p class="first__row">Sales</p>
         <p>View all new</p>
         <p>New in clothing</p>
@@ -45,7 +45,17 @@
         <p>Most popular</p>
       </div>
     </div>
-
+    <div class="footer__row"> <p>Find Store</p>  <p>Customer Service &#709;</p>  <p>Newsletter sign up</p> <p>We are Monki &#709;</p>
+      <p>#monkistyle</p>  <p>About Monki &#709;</p>
+    </div>
+    <div class="footer__icons">
+      <p><i class="fa fa-facebook" style="font-size:20px"></i></p>
+      <p><i class="fa fa-pinterest" style="font-size:20px"></i></p>
+      <p><i class="fa fa-instagram" style="font-size:20px"></i></p>
+      <p><i class="fa fa-twitter" style="font-size:20px"></i></p>
+      <p><i class="fa fa-snapchat" style="font-size:20px"></i></p>
+      <p><i class="fa fa-spotify" style="font-size:20px"></i></p>
+    </div>
   </div>
 
 	<a><img src = "https://cdn.shopify.com/s/files/1/0076/0073/4319/articles/monki_1200x1200.jpg?v=1543411172"></a>
@@ -57,7 +67,6 @@
         <div class="modal__inner">
           <div><button class="btn__close" (click)="closeForm()">x</button></div>
           <div class="modal__inner__text">
-            <div class="modal__wrapper"></div>
             <div class="head__inner">
               <span class="inside__form">Sign in</span>
               <span class="inside_create"><a href="#" (click)="showCreateForm()" style="font-weight: 600;">Create an account</a></span>
@@ -137,5 +146,6 @@
     </form>
   </div>
 
+  <button class="bag"> <span><i class='fas fa-shopping-bag' style='font-size:24px'></i></span> <span>Bag</span> </button>
 
 </body>

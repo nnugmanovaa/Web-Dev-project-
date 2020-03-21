@@ -12,6 +12,7 @@ import { Photo, photos } from "../photos"
 export class CategoriesComponent implements OnInit {
   photos: Photo[];
   categories: Category[];
+  imageClicked: boolean = true;
   constructor() { }
 
   private getCategories(): void {
@@ -25,6 +26,15 @@ export class CategoriesComponent implements OnInit {
   	this.getCategories();
     this.getPhotos();
   }
+
+  showInstagram(){
+    this.imageClicked = !this.imageClicked;
+  }
+
+  closeForm(){
+    this.imageClicked = !this.imageClicked;
+  }
+
 
 
 }

@@ -15,11 +15,30 @@
 	<div class = "photos">
 		<div *ngFor = "let photo of photos" class="photo__card">
       <img class = "instagram" [src]="photo.link">
-      <div class="team__overlay__text">
+      <div (click)="showInstagram()" class="team__overlay__text" >
         <div class="team__content__inner">
           <h6>{{photo.page}}</h6>
         </div>
      </div>
+     <div *ngIf="!imageClicked" >
+      <form class="modal">
+        <div class="modal__backdrop"></div>
+          <div class="modal__inner">
+            <div><button class="btn__close" (click)="closeForm()">x</button></div>
+            <div class="modal__inner__text">
+                <div class="inst__page__inner__left">
+                  <img [src]="photo.link" alt="photo">
+                </div>
+                <div class="inst__page__inner__right">
+                  <h1>World</h1>
+                </div>
+              </div>
+            </div>
+      </form>
     </div>
-	</div>
+
+    </div>
+  </div>
+
+
 </body>
