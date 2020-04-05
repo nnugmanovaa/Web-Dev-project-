@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 .list {
 	display: flex;
 	justify-content: flex-start;
@@ -12,6 +14,7 @@
 	width: 400px;
 	font-size: 30px;
 	text-align: center;
+	color: black;
 }
 .pic {
 	margin-top: 50px;
@@ -21,6 +24,7 @@ body{
 	margin-left: 68px;
 	margin-right: 68px;
 	margin-top: 100px;
+	text-align: center;
 }
 .shop {
 	position: absolute;
@@ -36,11 +40,9 @@ body{
 	color: white;
 }
 .insta {
-	margin-left: 380px;
-	text-align: center;
 	width: 600px;
 	font-weight: 400;
-	box-sizing: border-box;
+	display: inline-block;
 	padding-top: 20px;
 	line-height: 60px;
 	font-size: 30px;
@@ -52,7 +54,7 @@ body{
 }
 .instagram {
 	width: 324.075px;
-	margin-top: 20px;
+	height:340.075px;
 }
 .photos {
 	display: flex;
@@ -68,12 +70,12 @@ body{
 
 .team__overlay__text{
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 324.075px;
+  height:340.075px;
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
+
   align-items: flex-end;
   opacity: 0;
   color: #ffffff;
@@ -91,49 +93,17 @@ body{
   background-color: rgba(31,49,58,.7);
   transition: opacity .25s ease;
 }
+.instalink {
+  text-decoration: none;
+  color: white;
 
-
-
-/*.inst__page__modal{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center
 }
-
-.inst__page__inner{
-  width: 420px;
-  height: 400px;
-  background: linear-gradient(45deg,#ed1385 0,#d602f2 50%,#3700ff 100%);
-  position: absolute;
-  z-index: 2;
-  padding: 0px 10px;
+.instalink:hover {
+	color: grey;
 }
-
-.inst__page__backdrop{
-  background-color: #000000;
-  opacity: 0.5;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+h6 {
+	margin-left: 40px;
 }
-
-
-.btn__close{
-  margin-top: 8px;
-  margin-left: 400px;
-  transform: scale(2);
-  color: #ffffff;
-  background-color: #3700ff;
-  border: none;
-  padding-top: -4px;
-  cursor: pointer;
-  outline: none;
-}*/
 
 .modal{
   width: 100%;
@@ -146,31 +116,28 @@ body{
   align-items: center
 }
 
-/*.modal__wrapper{
-  padding: 10px;
-}*/
+
 
 .modal__inner{
-  width: 970px;
-  height: 450px;
   background: linear-gradient(45deg,#ed1385 0,#d602f2 50%,#3700ff 100%);
   position: absolute;
   z-index: 2;
-  padding: 0px 10px;
+  padding: 0px 10px 60px;
+  width: 970px;
+  height: 450px;
 }
 
 .modal__inner__text{
   display: flex;
-  margin-top: -10px;
-  padding: 15px 40px 10px 50px;
+  margin-top: -20px;
+  padding: 0px;
   background: #ffffff;
   box-sizing: content-box;
-
 }
 
 .modal__backdrop{
-  background-color: #000000;
-  opacity: 0.5;
+  background-color: #ffffff;
+  opacity: 0.1;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -178,14 +145,83 @@ body{
 
 .inst__page__inner__left{
   width: 50%;
+  box-sizing: border-box;
 }
 
 .inst__page__inner__left img{
   width: 100%;
+  margin-bottom: -4px;
 }
 
 .inst__page__inner__right{
   width: 50%;
 }
 
+.btn__close{
+  background-color: #4300FE;
+  margin-left: 940px;
+  color: #ffffff;
+  outline: none;
+  text-align: center;
+  align-items: center;
+  transform: scale(1.002);
+}
 
+.btn__close:hover{
+  background-color: #4300FE;
+}
+
+.instagram__page{
+  text-align: left;
+  margin-top: 20px;
+}
+
+.insta__icon{
+  margin-left: 30px;
+  display: inline-block;
+  font-size: 70px;
+}
+
+.user__info{
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.insta__name{
+  display: block;
+  font-size: 11px;
+  color: #777777;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.insta__link{
+  color: #a50aff;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.insta__link:hover{
+  border-bottom: 1px solid #a50aff;
+}
+
+.title__insta{
+  padding-top: 20px;
+}
+
+.inner__photo{
+  margin-top: 40px;
+  width: 200px;
+  height: 300px;
+}
+
+.inner__text{
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: 'Open Sans', sans-serif;
+  color: #1F313A;
+}

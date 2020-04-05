@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category, categories } from '../categories';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +11,14 @@ export class HeaderComponent implements OnInit {
 
   isClicked : boolean = true;
   menuOpened: boolean = true;
-
   isCreate: boolean = true;
+  categories: Category[];
 
   constructor() { }
+
+   private getCategories(): void {
+    of(categories).subscribe(category => this.categories = category);
+}
 
   showForm(){
     this.isClicked = !this.isClicked;
@@ -38,7 +44,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+     this.getCategories();
   }
 
 }

@@ -10,6 +10,7 @@ import { Photo, photos } from "../photos"
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
+  p: Photo = {} as any;
   photos: Photo[];
   categories: Category[];
   imageClicked: boolean = true;
@@ -23,18 +24,18 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  	this.getCategories();
+    this.getCategories();
     this.getPhotos();
   }
 
-  showInstagram(){
-    this.imageClicked = !this.imageClicked;
-  }
 
   closeForm(){
     this.imageClicked = !this.imageClicked;
   }
 
-
+  showInstagram(photo){
+    this.p = photo
+    this.imageClicked = !this.imageClicked;
+  }
 
 }

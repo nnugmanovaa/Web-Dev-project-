@@ -1,20 +1,16 @@
 body {
 	background-color: rgb(254, 205, 211);
 	margin-top: 50px;
-	width: 1540px;
-	margin-left: -10px
+	text-align: center;
 }
 .text {
-	text-align: center;
 	color: grey;
-    padding-bottom: 25px;
-    display: block;
+    display: inline-block;
+    width: 600px;
     font-family: Circular-Book-S,HelveticaNeue-Light,'Helvetica Neue Light','Helvetica Neue',Helvetica,Arial,Sans-Serif;
     font-size: 13px;
     font-weight: 400;
-    line-height: 16px;
-    margin-left: 480px;
-    width: 583px;   
+    line-height: 16px; 
 }
 .brands {
 	text-align: center;
