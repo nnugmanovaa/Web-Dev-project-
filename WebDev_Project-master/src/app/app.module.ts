@@ -16,13 +16,20 @@ import { HttpClientJsonpModule} from '@angular/common/http';
 import { ShareModule } from '@ngx-share/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { from } from 'rxjs';
+import { BagComponent } from './bag/bag.component';
+import { CommentsComponent } from './comments/comments.component';
+
 
 const routes: Routes = [
-  {path: '', redirectTo:'/categories', pathMatch: 'full'},
+  {path: '', redirectTo: '/categories', pathMatch: 'full'},
   {path: 'categories', component: CategoriesComponent},
   {path: 'categories/:categoryId/products', component: ProductsComponent},
-  {path: 'categories/:categoryId/products/:productId/description', component: ProductDetailComponent} 
-]; 
+  {path: 'categories/:categoryId/products/:productId/description', component: ProductDetailComponent},
+  {path: 'categories/:bag', component: BagComponent}
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +38,9 @@ const routes: Routes = [
     CategoriesComponent,
     FooterComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    BagComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +49,11 @@ const routes: Routes = [
     HttpClientJsonpModule,
     FontAwesomeModule,
     ShareModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      preventDuplicates: true
+    }),
     RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [],
