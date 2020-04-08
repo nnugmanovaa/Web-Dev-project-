@@ -16,11 +16,13 @@ import { HttpClientJsonpModule} from '@angular/common/http';
 import { ShareModule } from '@ngx-share/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { from } from 'rxjs';
 import { BagComponent } from './bag/bag.component';
 import { CommentsComponent } from './comments/comments.component';
+import {FormsModule} from '@angular/forms';
 
 
 const routes: Routes = [
@@ -54,7 +56,9 @@ const routes: Routes = [
       timeOut: 2000,
       preventDuplicates: true
     }),
-    RouterModule.forRoot(routes)],
+    RouterModule.forRoot(routes),
+    FormsModule
+  ],
   exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]

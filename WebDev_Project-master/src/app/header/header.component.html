@@ -63,7 +63,7 @@
 
 	<button class = "sign" (click)="showForm()"><span>Sign in</span></button>
   <div *ngIf="!isClicked" id = "isClicked">
-    <form class="modal" method="post">
+    <form class="modal form-group" method="post">
       <div class="modal__backdrop"></div>
         <div class="modal__inner">
           <div><button class="btn__close" (click)="closeForm()">x</button></div>
@@ -77,13 +77,13 @@
               <label>Enter User name</label>
             </div>
             <div>
-              <input type="text" placeholder="Username" class="active">
+              <input type="text" placeholder="Username" class="active form-control" [(ngModel)]="username">
             </div>
             <div>
               <label>Password</label>
             </div>
             <div>
-              <input type="password" placeholder="Password" class="active">
+              <input type="password" placeholder="Password" class="active form-control" [(ngModel)]="password">
             </div>
               <div>
                 <input type="checkbox" checked> <span class="inside__check">Keep me signed in</span>
@@ -112,16 +112,16 @@
             </div>
             <div class="inside__info">We´ll send you order confirmation to this email</div>
             <div>
-              <input type="text" placeholder="Email address" class="active">
+              <input type="text" placeholder="Email address" class="active form-control" [(ngModel)]="email">
             </div>
             <div>
-              <input type="password" placeholder="Password" class="active">
+              <input type="password" placeholder="Password" class="active" [(ngModel)]="password">
             </div>
             <div>
-              <input type="password" placeholder="Confirm Password" class="active">
+              <input type="password" placeholder="Confirm Password" class="active" [(ngModel)]="repassword">
             </div>
             <div class="selector">
-              <select>
+              <select [(ngModel)]="country">
                 <option value="0">Select country:</option>
                 <option value="1">Australia</option>
                 <option value="2">Canada</option>

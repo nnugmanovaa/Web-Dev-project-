@@ -25,7 +25,7 @@ import {CommentsService} from '../comments.service';
 export class ProductDetailComponent implements OnInit {
 
   products: Product;
-  comments: Comment[];
+  comment: string;
   faTwitter = faTwitter;
   faFacebookF = faFacebookF;
   faPinterestP = faPinterestP;

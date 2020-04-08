@@ -14,8 +14,9 @@
       </div>
 			<p>Description: {{products.description}}</p>
 		</div>
-    <div *ngFor="let comment of comments">
-      {{comment}}
+    <div class="comments">
+      <textarea cols="60" rows="5" [(ngModel)]="comment"> </textarea>
+      <button class="btn__add">Leave comment</button>
     </div>
 
 		<div class="buttons">
