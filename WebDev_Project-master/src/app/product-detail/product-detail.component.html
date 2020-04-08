@@ -14,10 +14,7 @@
       </div>
 			<p>Description: {{products.description}}</p>
 		</div>
-    <div class="comments">
-      <textarea cols="60" rows="5" [(ngModel)]="comment"> </textarea>
-      <button class="btn__add">Leave comment</button>
-    </div>
+    <app-comments></app-comments>
 
 		<div class="buttons">
 			<button shareButton="facebook" [style.backgroundColor]="share.prop.facebook.color">

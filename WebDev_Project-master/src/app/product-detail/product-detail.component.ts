@@ -56,5 +56,4 @@ export class ProductDetailComponent implements OnInit {
     this.toastr.error('Please, SIGN IN in order to use BAG');
   }
 
-
 }
