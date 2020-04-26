@@ -12,7 +12,6 @@ import { faTelegramPlane } from '@fortawesome/free-brands-svg-icons/faTelegramPl
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
 import { faGooglePlusG } from '@fortawesome/free-brands-svg-icons/faGooglePlusG';
 import {ToastrService} from 'ngx-toastr';
-import {CommentsService} from '../comments.service';
 import {Product} from '../entities/product';
 import {ProductService} from '../services/product.service';
 
@@ -35,7 +34,6 @@ export class ProductDetailComponent implements OnInit {
   faGooglePlusG = faGooglePlusG;
 
   constructor(private route: ActivatedRoute,
-              private commentsService: CommentsService,
               public productService: ProductService,
               private location: Location,
               public share: ShareService,
@@ -56,4 +54,10 @@ export class ProductDetailComponent implements OnInit {
     this.toastr.error('Please, SIGN IN in order to use BAG');
   }
 
+  add() {
+    const id1 = +this.route.snapshot.paramMap.get('productId');
+    this.productService.addToBasket(id1).subscribe(perf => {
+      this.toastr.success('Product successfully idded!');
+    });
+  }
 }

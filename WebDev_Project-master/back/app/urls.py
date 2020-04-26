@@ -11,5 +11,5 @@ urlpatterns = [
 	path('products', cbv.ProductsListApiView.as_view()),
 	path('products/<int:product_id>', cbv.ProductDetailApiView.as_view()),
 	path('comments', cbv.CommentsListApiView.as_view()),
-	path('comments/<int:detail>', cbv.CommentDetailApiView.as_view())
+	path('comments/<int:comment_id>', cbv.CommentDetailApiView.as_view())
 ]

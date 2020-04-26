@@ -4,4 +4,5 @@ export class Product {
   price: number;
   link: string;
   description: string;
+  is_added: boolean;
 }

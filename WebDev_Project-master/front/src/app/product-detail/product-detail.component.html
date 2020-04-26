@@ -12,11 +12,10 @@
 			<h2>{{product.name}}</h2>
 			<span>${{product.price}}</span>  <br><br>
       <div>
-        <button (click)="ShowToast()" class="btn__bag">Add to bag</button>
+        <button (click)="add()" class="btn__bag">Add to bag</button>
       </div>
 			<p>Description: {{product.description}}</p>
 	</div>
-    <app-comments></app-comments>
 
 		<div class="buttons">
 			<button shareButton="facebook" [style.backgroundColor]="share.prop.facebook.color">
@@ -44,6 +43,7 @@
 		        <a class="fa fa-google"></a>
 		    </button>
 	    </div>
+      <app-comments></app-comments>
     </div>
 
 </body>

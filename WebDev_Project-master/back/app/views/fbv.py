@@ -36,10 +36,14 @@ def products_by_category(request, category_id):
 		return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
-def comments_by_product(request, product_id):
+def comments_by_product(request, product_id, category_id):
 	try:
-		products = Product.objects.get(id = product_id)
-		serializer = ProductSerializer(products, many = True)
+		categories = Category.objects.get(id = category_id)
+		try:
+			products = Product.objects.get(id=product_id)
+			serializer = ProductSerializer(products, many=True)
+		except Category.DoesNotExist as e:
+			return Response("error", str(e))
 	except Product.DoesNotExist as e:
 		return Response("error:", str(e))
 
@@ -47,3 +51,5 @@ def comments_by_product(request, product_id):
 		comments = products.comment_set.all()
 		serializer = CommentSerializer(comments, many = True)
 		return Response(serializer.data)
+
+

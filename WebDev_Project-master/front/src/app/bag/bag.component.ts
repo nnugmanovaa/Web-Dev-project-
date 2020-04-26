@@ -1,6 +1,8 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import {of} from 'rxjs';
 import {Card, cards} from '../card';
+import {Product} from '../entities/product';
+import {ProductService} from '../services/product.service';
 
 
 @Component({
@@ -10,14 +12,26 @@ import {Card, cards} from '../card';
 })
 export class BagComponent implements OnInit {
   cards: Card[];
-  constructor() { }
-
-  private getCards(): void {
-    of(cards).subscribe(card => this.cards = card);
-  }
+  products: Product[];
+  show: number;
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
-    this.getCards();
+    this.getProducts();
   }
 
+  public getProducts() {
+    this.productService.getProducts().subscribe(perf => {
+      this.products = perf.filter(e => e.is_added === true);
+      console.log(this.products.length);
+      this.show = this.products.length;
+    });
+  }
+
+  remove(id: number) {
+    this.productService.addToBasket(id).subscribe(perf => {
+      console.log('removes');
+      this.getProducts();
+    });
+  }
 }

@@ -19,4 +19,8 @@ export class ProductService {
   public getProductsById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/app/products/${id}`);
   }
+
+  public addToBasket(id: number): Observable<Product> {
+    return this.http.patch<Product>(`${this.apiUrl}/app/products/${id}`, {});
+  }
 }

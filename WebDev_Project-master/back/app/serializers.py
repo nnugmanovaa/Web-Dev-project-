@@ -42,10 +42,10 @@ class ProductSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Product
-		fields = ('id', 'name', 'price', 'link', 'description', 'category_id')
+		fields = ('id', 'name', 'price', 'link', 'description', 'category_id', 'is_added')
 
 class CommentSerializer(serializers.ModelSerializer):
-	product_id = serializers.IntegerField(write_only = True)
+	product_id = serializers.IntegerField(write_only=True)
 
 	class Meta:
 		model = Comment

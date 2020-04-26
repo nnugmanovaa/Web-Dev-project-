@@ -17,6 +17,7 @@ class Product(models.Model):
 	price = models.FloatField()
 	link = models.TextField()
 	description = models.TextField()
+	is_added = models.BooleanField(default=False)
 	category = models.ForeignKey(Category, on_delete = models.CASCADE)
 
 	def __str__(self):
@@ -30,8 +31,8 @@ class Manager(models.Model):
 		return '{}: {}'.format(self.id, self.name)
 
 class Comment(models.Model):
-	comment = models.TextField()
-	comment_product = models.ForeignKey(Product, on_delete = models.CASCADE)
+	comment = models.CharField(max_length= 500)
+	product = models.ForeignKey(Product, on_delete = models.CASCADE)
 
 	def __str__(self):
 		return '{}: {}'.format(self.id, self.comment)

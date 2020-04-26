@@ -43,7 +43,6 @@ button {
 .btn__bag{
   color: #ffffff;
   padding: 20px 0px;
-  margin-top: -7px;
   background-color: #FECDD3;
   font-weight: 600;
   font-size: 18px;
@@ -51,9 +50,14 @@ button {
   text-align: center;
   justify-content: center;
   outline: none;
+  margin-top: 10px;
 }
 
 .btn__bag:hover{
   background-color: #ED1385;
+}
+
+.buttons{
+  margin-bottom: 20px;
 }
 

@@ -7,8 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.permissions import IsAuthenticated
 
-from app.models import Category, Product, Comment, Basket
-from app.serializers import CategorySerializer, ProductSerializer,  CommentSerializer, BasketSerializer 
+from app.models import Product, Comment
+from app.serializers import  ProductSerializer,  CommentSerializer
 
 class ProductsListApiView(APIView):
 	def get(self, request):
@@ -23,6 +23,8 @@ class ProductsListApiView(APIView):
 			return Response(serializer.data, status = status.HTTP_201_CREATED)
 		return Response({"error": serializer.errors}, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
 class ProductDetailApiView(APIView):
 	def get_object(self, id):
 		try:
@@ -35,9 +37,13 @@ class ProductDetailApiView(APIView):
 		serializer = ProductSerializer(product)
 		return Response(serializer.data)
 
-	def put(self, request, product_id):
+	def patch(self, request, product_id):
 		product = self.get_object(product_id)
-		serializer = ProductSerializer(instance = product, data = request.data)
+		if product.is_added == False:
+			product.is_added = True
+		else:
+			product.is_added = False
+		serializer = ProductSerializer(instance = product, data = request.data, partial=True)
 		if serializer.is_valid():
 			serializer.save()
 			return Response(serializer.data)
@@ -55,11 +61,12 @@ class CommentsListApiView(APIView):
 		return Response(serializer.data)
 
 	def post(self, request):
-		serializer = CommentSerializer(data = date.request)
+		serializer = CommentSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data,status = status.HTTP_201_CREATED)
-		return Response({"error": serializer.errors}, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response({'error': serializer.errors},
+						status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class CommentDetailApiView(APIView):
 	def get_object(self, id):
@@ -80,3 +87,8 @@ class CommentDetailApiView(APIView):
 			serializer.save()
 			return Response(serializer.data)
 		return Response({'error': serializer.errors})
+
+	def delete(self, request, comment_id):
+		comments = self.get_object(comment_id)
+		comments.delete()
+		return Response({"deleted": True})
