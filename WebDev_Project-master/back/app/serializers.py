@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
+from django_filters import rest_framework as filters
 from app.models import Product,Category,Basket,Comment,Manager
 
 class CategorySerializer(serializers.Serializer):
@@ -58,5 +60,21 @@ class BasketSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Basket
 		fields = ('id', 'products')
+
+class UserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ('id', 'username', 'email', 'password')
+
+class RegisterUserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ('username', 'password', 'email')
+
+	def create(self, validated_data):
+		user = super(RegisterUserSerializer, self).create(validated_data)
+		user.set_password(validated_data['password'])
+		user.save()
+		return user
 
 

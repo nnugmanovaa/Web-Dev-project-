@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,7 +9,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticated
 
 from app.models import Product, Comment
-from app.serializers import  ProductSerializer,  CommentSerializer
+from app.serializers import ProductSerializer, CommentSerializer, UserSerializer
+
 
 class ProductsListApiView(APIView):
 	def get(self, request):
@@ -92,3 +94,32 @@ class CommentDetailApiView(APIView):
 		comments = self.get_object(comment_id)
 		comments.delete()
 		return Response({"deleted": True})
+
+
+class UserListApiView(APIView):
+
+	def get(self, request):
+		users = User.objects.all()
+		serializer = UserSerializer(users, many = True)
+		return Response(serializer.data)
+
+	def post(self, request):
+		serializer = UserSerializer(data = request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status = status.HTTP_201_CREATED)
+		return Response({"error": serializer.errors}, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class UserDetailApiView(APIView):
+	def get_object(self, id):
+		try:
+			return User.objects.get(id = id)
+		except User.DoesNotExist as e:
+			return Response({'error': str(e)})
+
+	def delete(self, request, user_id):
+		user = self.get_object(user_id)
+		user.delete()
+		return Response({"deleted": True})
+

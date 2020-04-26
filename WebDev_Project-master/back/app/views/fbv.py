@@ -6,7 +6,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from app.models import Category, Product, Comment, Basket
-from app.serializers import CategorySerializer, ProductSerializer, CommentSerializer, BasketSerializer 
+from app.serializers import CategorySerializer, ProductSerializer, CommentSerializer, BasketSerializer, \
+	RegisterUserSerializer
+
 
 @api_view(['GET', 'POST'])
 def category_list(request):	
@@ -51,5 +53,15 @@ def comments_by_product(request, product_id, category_id):
 		comments = products.comment_set.all()
 		serializer = CommentSerializer(comments, many = True)
 		return Response(serializer.data)
+
+
+@api_view(['POST'])
+def create_user(request):
+    serialized = RegisterUserSerializer(data=request.data)
+    if serialized.is_valid():
+        serialized.save()
+        return Response(serialized.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

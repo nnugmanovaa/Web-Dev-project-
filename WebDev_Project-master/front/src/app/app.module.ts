@@ -11,7 +11,7 @@ import { ProductsComponent } from './products/products.component';
 
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { HttpClientJsonpModule} from '@angular/common/http';
 import { ShareModule } from '@ngx-share/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,6 +23,7 @@ import { from } from 'rxjs';
 import { BagComponent } from './bag/bag.component';
 import { CommentsComponent } from './comments/comments.component';
 import {FormsModule} from '@angular/forms';
+import {AuthInterceptor} from './AuthInterceptor';
 
 
 const routes: Routes = [
@@ -60,7 +61,11 @@ const routes: Routes = [
     FormsModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [RegisterService, <ClassProvider> {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
