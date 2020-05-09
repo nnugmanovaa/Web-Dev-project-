@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import {CategoryService} from '../services/category.service';
 import {Product} from '../entities/product';
 import {Category} from '../entities/category';
+import {ProductService} from '../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -15,13 +16,18 @@ export class ProductsComponent implements OnInit {
 
   constructor(public categoryService: CategoryService,
               private route: ActivatedRoute,
-              private location: Location,
+              public productService: ProductService,
               public router: Router) { }
 
   products: Product[];
   cat: Category;
   categories: Category[];
   id: number;
+  filtered = false;
+  choose = false;
+  prd: Product[];
+  prc_l: number;
+  prc_g: number;
 
   ngOnInit(): void {
     const categoryId = this.route.snapshot.paramMap.get('categoryId');
@@ -35,6 +41,34 @@ export class ProductsComponent implements OnInit {
   getCategories(): void {
     this.categoryService.getCategories().subscribe(perf => {
       this.categories = perf;
+    });
+  }
+
+  filter_l(cnt: number) {
+    this.filtered = true;
+    const categoryId = this.route.snapshot.paramMap.get('categoryId');
+    this.productService.filterLower(+categoryId, cnt).subscribe(perf => {
+      this.prd = perf;
+    });
+  }
+  filter_g(cnt: number) {
+    this.filtered = true;
+    const categoryId = this.route.snapshot.paramMap.get('categoryId');
+    this.productService.filterGreater(+categoryId, cnt).subscribe(perf => {
+      this.prd = perf;
+    });
+  }
+
+  type() {
+    this.choose = !this.choose;
+  }
+
+  all() {
+    this.filtered = false;
+    const categoryId = this.route.snapshot.paramMap.get('categoryId');
+    this.categoryService.getProductsByCategory(+categoryId).subscribe(perf => {
+      this.products  = perf;
+      this.id = +categoryId;
     });
   }
 }

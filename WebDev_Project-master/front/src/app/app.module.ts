@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ClassProvider } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { HttpClientJsonpModule} from '@angular/common/http';
 import { ShareModule } from '@ngx-share/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { RegisterService } from './services/register.service'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -61,11 +61,14 @@ const routes: Routes = [
     FormsModule
   ],
   exports: [RouterModule],
-  providers: [RegisterService, <ClassProvider> {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+    providers: 
+    [
+        RegisterService, <ClassProvider> {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

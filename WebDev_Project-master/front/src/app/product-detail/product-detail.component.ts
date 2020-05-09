@@ -32,6 +32,7 @@ export class ProductDetailComponent implements OnInit {
   faTelegramPlane = faTelegramPlane;
   faLinkedinIn = faLinkedinIn;
   faGooglePlusG = faGooglePlusG;
+  logged = false;
 
   constructor(private route: ActivatedRoute,
               public productService: ProductService,
@@ -48,6 +49,10 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductsById(+id1).subscribe(perf => {
       this.product = perf;
     });
+    const token = localStorage.getItem('token');
+    if( token ){
+      this.logged = true;
+    }
   }
 
   ShowToast() {

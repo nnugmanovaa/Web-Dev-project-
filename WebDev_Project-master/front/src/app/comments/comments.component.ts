@@ -1,24 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CommentService} from '../services/comment.service';
 import {Comment} from '../entities/comment';
+import {HeaderComponent} from '../header/header.component'
+import {Product} from '../entities/product';
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.css'],
 })
 export class CommentsComponent implements OnInit {
+
+  constructor(public commentService: CommentService,
+              private route: ActivatedRoute,
+              private toastr: ToastrService,
+              private router: Router,
+              ) { }
+
+
+
   comment: string;
   comments: Comment[];
   update = false;
   text = this.comment;
   newComment: string;
-
-  constructor(public commentService: CommentService,
-              private route: ActivatedRoute,
-              private toastr: ToastrService,
-              private router: Router) { }
+  public logged = false;
+ products: Product[];
+ 
 
   ngOnInit(): void {
     const productId = +this.route.snapshot.paramMap.get('productId');
@@ -26,6 +36,11 @@ export class CommentsComponent implements OnInit {
     this.commentService.getComments(categoryId, productId).subscribe(perf => {
       this.comments = perf;
     });
+
+    const token = localStorage.getItem('token');
+    if( token ){
+      this.logged = true;
+    }
   }
 
 
@@ -62,5 +77,9 @@ export class CommentsComponent implements OnInit {
       });
     });
     this.update = false;
+  }
+
+   showToast() {
+    this.toastr.error('Authorization required');
   }
 }

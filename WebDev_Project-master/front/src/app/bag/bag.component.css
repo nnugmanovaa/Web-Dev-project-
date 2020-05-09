@@ -13,6 +13,15 @@
   outline: none;
 }
 
+.total{
+  text-align: right;
+  margin-right: 120px;
+}
+
+.total h3{
+  margin-top: -15px;
+}
+
 .content__inner h2{
   font-size: 32px;
   line-height: 40px;

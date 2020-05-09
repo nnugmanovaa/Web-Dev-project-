@@ -2,18 +2,27 @@
 
 <body>
 
+
+
 	<div style="margin-left: 100px;" class = "pic">
 		<img [src]="product.link" alt="products.name">
 	</div>
 
-
+   
 	<div class = "description">
 		<div>
 			<h2>{{product.name}}</h2>
 			<span>${{product.price}}</span>  <br><br>
-      <div>
+
+		
+      <div *ngIf = "logged">
         <button (click)="add()" class="btn__bag">Add to bag</button>
       </div>
+
+ <div *ngIf = "!logged">
+        <button (click)="ShowToast()" class="btn__bag">Add to bag</button>
+      </div>
+    
 			<p>Description: {{product.description}}</p>
 	</div>
 
@@ -45,6 +54,7 @@
 	    </div>
       <app-comments></app-comments>
     </div>
+
 
 </body>
 

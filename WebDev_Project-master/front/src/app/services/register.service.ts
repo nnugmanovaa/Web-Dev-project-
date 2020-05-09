@@ -16,13 +16,13 @@ export class RegisterService {
 
   private apiUrl = environment.apiUrl;
 
-  signup(user: User){
+  signup(user: User): Observable<IAuthResponse>{
     const body = {username: user.username, password: user.password, email: user.email}
-    return this.http.post(`http://127.0.0.1:8000/app/users/`, body );
+    return this.http.post<IAuthResponse>(`${this.apiUrl}/app/signup/`, body );
   }
 
   login(username, password): Observable<IAuthResponse> {
-    return this.http.post<IAuthResponse>(`http://127.0.0.1:8000/app/login/`, {
+    return this.http.post<IAuthResponse>(`${this.apiUrl}/app/login/`, {
       username,
       password
     });

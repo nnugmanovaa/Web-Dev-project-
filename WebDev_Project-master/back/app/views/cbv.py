@@ -1,13 +1,12 @@
-from datetime import date
-
 from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
 
+from app.filters import ProductManager
 from app.models import Product, Comment
 from app.serializers import ProductSerializer, CommentSerializer, UserSerializer
 
@@ -16,6 +15,8 @@ class ProductsListApiView(APIView):
 	def get(self, request):
 		products = Product.objects.all()
 		serializer = ProductSerializer(products, many = True)
+		filter_backends = (DjangoFilterBackend,filters.SearchFilter,)
+		filter_class = ProductManager
 		return Response(serializer.data)
 
 	def post(self, request):

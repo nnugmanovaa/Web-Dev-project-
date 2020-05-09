@@ -23,4 +23,12 @@ export class ProductService {
   public addToBasket(id: number): Observable<Product> {
     return this.http.patch<Product>(`${this.apiUrl}/app/products/${id}`, {});
   }
+
+  public filterLower(ctgId: number, cnt: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/app/categories/${ctgId}/products/${cnt}/lower`);
+  }
+
+  public filterGreater(ctgId: number, cnt: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/app/categories/${ctgId}/products/${cnt}/greater`);
+  }
 }

@@ -1,9 +1,5 @@
 from django.db import models
 
-# Create your models here.
-from app.filters import ProductManager
-
-
 class Category(models.Model):
 	name = models.CharField(max_length = 200)
 	link = models.TextField()
@@ -21,7 +17,7 @@ class Product(models.Model):
 	description = models.TextField()
 	is_added = models.BooleanField(default=False)
 	category = models.ForeignKey(Category, on_delete = models.CASCADE)
-	filter_class = ProductManager()
+
 
 	def __str__(self):
 		return '{}: {}'.format(self.id, self.name)

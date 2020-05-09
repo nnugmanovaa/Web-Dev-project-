@@ -86,7 +86,7 @@
             <label>Password</label>
           </div>
           <div>
-            <input type="text" placeholder="Password" class="active form-control" [(ngModel)]="password">
+            <input type="password" placeholder="Password" class="active form-control" [(ngModel)]="password">
           </div>
           <div>
             <input type="checkbox" checked> <span class="inside__check">Keep me signed in</span>
@@ -127,7 +127,7 @@
         <div class = "signup">
           <div  *ngIf ="!done">
             <input type = "email" name="email" class="active form-control" [(ngModel)]="user.email"  placeholder="Email address" ><br><br>
-            <input type ="text" name="username" class="active" [(ngModel)]="user.username"  placeholder="Username"><br><br>
+            <input type ="password" name="username" class="active" [(ngModel)]="user.username"  placeholder="Username"><br><br>
             <input name="password" class="active" [(ngModel)]="user.password" placeholder="Password"><br><br>
             <div class="selector">
               <select>

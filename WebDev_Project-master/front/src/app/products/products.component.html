@@ -1,25 +1,59 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 <body>
-	<div class = "categ">
+<div class = "categ">
 		<span *ngFor = "let category of categories">
 			<a  href="/categories/{{category.id}}/products">
 				{{category.name}}
 			</a>
 		</span>
-	</div>
-	<!--<div class = "skirts">
-			<div>{{}}</div>
-	</div>-->
+</div>
 
-	<div class= "prd">
-		<div *ngFor = "let product of products">
-			<a routerLink="/categories/{{id}}/products/{{product.id}}/description">
-				<div class = "name">{{product.name}}<br>
-					${{product.price}}
-				</div>
-				<img class = "pic" [src]="product.link" [alt]="product.name">
-			</a>
-		</div>
-	</div>
+<div>
+  <h5 class="filter__icon" (click)="type()">Filter by price▼</h5>
+  <div class="lower__inp" *ngIf="choose">
+    <div class="filter__labels">
+      <label style="margin-right: 20px" for="lower">Lower</label>
+      <input type="text" id="lower" [(ngModel)]="prc_l">
+      <input type="submit" value="🔍" (click)="filter_l(prc_l)">
+    </div>
+    <div class="filter__labels">
+      <label for="greater">Greater</label>
+      <input type="text" id="greater" [(ngModel)]="prc_g">
+      <input type="submit" value="🔍" (click)="filter_g(prc_g)">
+    </div>
+    <div class="filter__labels">
+      <h4 class="all" (click)="all()">All</h4>
+    </div>
+  </div>
+</div>
+
+
+<div class = "filter">
+  <div class= "prd" *ngIf="filtered">
+    <div *ngFor = "let product of prd">
+      <a routerLink="/categories/{{id}}/products/{{product.id}}/description">
+        <div class = "name">{{product.name}}<br>
+          ${{product.price}}
+        </div>
+        <img class = "pic" [src]="product.link" [alt]="product.name">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class= "prd" *ngIf="!filtered">
+  <div *ngFor = "let product of products">
+    <a routerLink="/categories/{{id}}/products/{{product.id}}/description">
+      <div class = "name">{{product.name}}<br>
+        ${{product.price}}
+      </div>
+      <img class = "pic" [src]="product.link" [alt]="product.name">
+    </a>
+  </div>
+</div>
 
 </body>
+
+
 
